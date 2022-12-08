@@ -22,11 +22,11 @@
     "url": "git://github.com/goldfire/howler.js.git"
   },
   "scripts": {
-    "build": "VERSION=`printf 'v' && node -e 'console.log(require(\"./package.json\").version)'` && sed -i '' '2s/.*/ *  howler.js '\"$VERSION\"'/' src/howler.core.js && sed -i '' '4s/.*/ *  howler.js '\"$VERSION\"'/' src/plugins/howler.spatial.js && uglifyjs --preamble \"/*! howler.js $VERSION | (c) 2013-2020, James Simpson of GoldFire Studios | MIT License | howlerjs.com */\" src/howler.core.js -c -m --screw-ie8 -o dist/howler.core.min.js && uglifyjs --preamble \"/*! howler.js $VERSION | Spatial Plugin | (c) 2013-2020, James Simpson of GoldFire Studios | MIT License | howlerjs.com */\" src/plugins/howler.spatial.js -c -m --screw-ie8 -o dist/howler.spatial.min.js && awk 'FNR==1{echo \"\"}1' dist/howler.core.min.js dist/howler.spatial.min.js | sed '3s~.*~/*! Spatial Plugin */~' | perl -pe 'chomp if eof' > dist/howler.min.js && awk '(NR>1 && FNR==1){printf (\"\\n\\n\")};1' src/howler.core.js src/plugins/howler.spatial.js > dist/howler.js",
+    "build": "esbuild ./src/howler.core.js --legal-comments=eof --minify --platform=browser --outfile=\"dist/howler.core.min.js\" && esbuild ./src/plugins/howler.spatial.js --legal-comments=eof --minify --platform=browser --outfile=\"dist/howler.spatial.min.js\" && esbuild ./src/everything.js --bundle --legal-comments=eof --minify --platform=browser --outfile=\"dist/howler.min.js\" && esbuild ./src/everything.js --bundle --legal-comments=eof --platform=browser --outfile=\"dist/howler.js\"",
     "release": "VERSION=`printf 'v' && node -e 'console.log(require(\"./package.json\").version)'` && git tag $VERSION && git push && git push origin $VERSION && npm publish"
   },
   "devDependencies": {
-    "uglify-js": "2.x"
+    "esbuild": "^0.16.2"
   },
   "main": "dist/howler.js",
   "license": "MIT",
