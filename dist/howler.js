@@ -1969,6 +1969,10 @@ var setupPanner = function(sound, type) {
     sound._parent.pause(sound._id, true).play(sound._id, true);
   }
 };
+globalThis.HowlerGlobal = HowlerGlobal;
+globalThis.Howler = Howler;
+globalThis.Howl = Howl;
+globalThis.Sound = Sound;
 export {
   Howl,
   Howler,

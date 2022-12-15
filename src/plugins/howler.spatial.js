@@ -655,4 +655,9 @@ var setupPanner = function(sound, type) {
   }
 }
 
+globalThis.HowlerGlobal = HowlerGlobal;
+globalThis.Howler = Howler;
+globalThis.Howl = Howl;
+globalThis.Sound = Sound;
+
 export { HowlerGlobal, Howler, Howl, Sound };
