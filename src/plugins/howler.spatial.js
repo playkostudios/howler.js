@@ -11,7 +11,7 @@
  */
 
 // Setup default properties.
-import { HowlerGlobal } from "../howler.core";
+import { HowlerGlobal } from "../howler.core.js";
 HowlerGlobal.prototype._pos = [0, 0, 0];
 HowlerGlobal.prototype._orientation = [0, 0, -1, 0, 1, 0];
 

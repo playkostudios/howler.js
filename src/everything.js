@@ -1,2 +1,2 @@
-export { Howl, Howler } from './howler.core';
+export * from './howler.core.js';
 import './plugins/howler.spatial.js';

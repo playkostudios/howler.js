@@ -22,7 +22,7 @@
     "url": "git://github.com/goldfire/howler.js.git"
   },
   "scripts": {
-    "build": "esbuild ./src/howler.core.js --legal-comments=eof --minify --platform=browser --outfile=\"dist/howler.core.min.js\" && esbuild ./src/plugins/howler.spatial.js --legal-comments=eof --minify --platform=browser --outfile=\"dist/howler.spatial.min.js\" && esbuild ./src/everything.js --bundle --legal-comments=eof --minify --platform=browser --outfile=\"dist/howler.min.js\" && esbuild ./src/everything.js --bundle --legal-comments=eof --platform=browser --outfile=\"dist/howler.js\"",
+    "build": "esbuild ./src/everything.js --bundle --format=esm --minify --legal-comments=eof --platform=browser --outfile=\"dist/howler.js\"",
     "release": "VERSION=`printf 'v' && node -e 'console.log(require(\"./package.json\").version)'` && git tag $VERSION && git push && git push origin $VERSION && npm publish"
   },
   "devDependencies": {
@@ -33,9 +33,6 @@
   "files": [
     "src",
     "dist/howler.js",
-    "dist/howler.min.js",
-    "dist/howler.core.min.js",
-    "dist/howler.spatial.min.js",
     "LICENSE.md"
   ]
 }
